@@ -14,7 +14,7 @@
 import 'package:auto_route/auto_route.dart' as _i3;
 import 'package:flutter/material.dart' as _i4;
 import 'package:satasat_app/screens/login_screen.dart' as _i2;
-import 'package:satasat_app/screens/splash_screen.dart' as _i1;
+import 'package:satasat_app/screens/splash_screen/splash_screen.dart' as _i1;
 
 class AppRouter extends _i3.RootStackRouter {
   AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])

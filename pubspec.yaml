@@ -66,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/rive_assets/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -86,6 +87,9 @@ flutter:
     - family: Source Sans Pro
       fonts:
         - asset: assets/fonts/SourceSansPro-Regular.ttf
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
 
   #
   # For details regarding fonts from package dependencies,

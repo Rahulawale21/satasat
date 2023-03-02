@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:satasat_app/constant/colors.dart';
+import 'package:satasat_app/screens/splash_screen/widgets/animated_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,9 +13,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late RiveAnimationController _btnController;
+  @override
+  void initState() {
+    _btnController = OneShotAnimation("active", autoplay: false);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       body: Stack(
         children: [
           const RiveAnimation.asset("assets/rive_assets/shapes.riv"),
@@ -46,8 +56,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 Text(
                   "Satasat can be especially useful for users looking to declutter their homes, find unique items or gifts, or connect with others who share their interests.",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: Colors.black45),
                 ),
+                AnimatedButton(btnController: _btnController),
               ],
             ),
           ))

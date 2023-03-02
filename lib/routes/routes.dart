@@ -1,5 +1,5 @@
 import 'package:auto_route/annotations.dart';
-import 'package:satasat_app/screens/splash_screen.dart';
+import 'package:satasat_app/screens/splash_screen/splash_screen.dart';
 
 import '../screens/login_screen.dart';
 
