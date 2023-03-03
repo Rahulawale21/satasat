@@ -19,5 +19,20 @@ Map<int, Color> primaryColorMap = {
   800: primaryColor.withOpacity(.9),
   900: primaryColor.withOpacity(1),
 };
+
+Map<int, Color> scaffoldBackgroundColorMap = {
+  50: scaffoldBackgroundColor.withOpacity(.1),
+  100: scaffoldBackgroundColor.withOpacity(.2),
+  200: scaffoldBackgroundColor.withOpacity(.3),
+  300: scaffoldBackgroundColor.withOpacity(.4),
+  400: scaffoldBackgroundColor.withOpacity(.5),
+  500: scaffoldBackgroundColor.withOpacity(.6),
+  600: scaffoldBackgroundColor.withOpacity(.7),
+  700: scaffoldBackgroundColor.withOpacity(.8),
+  800: scaffoldBackgroundColor.withOpacity(.9),
+  900: scaffoldBackgroundColor.withOpacity(1),
+};
 MaterialColor primarySwatch =
+    MaterialColor(primaryColor.value, primaryColorMap);
+MaterialColor scaffoldBackgroundColorSwatch =
     MaterialColor(primaryColor.value, primaryColorMap);

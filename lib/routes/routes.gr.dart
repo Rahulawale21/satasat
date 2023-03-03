@@ -11,49 +11,61 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
-import 'package:satasat_app/screens/login_screen.dart' as _i2;
+import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
+import 'package:satasat_app/screens/dashboard/dashboard_screen.dart' as _i2;
+import 'package:satasat_app/screens/home/home.dart' as _i3;
 import 'package:satasat_app/screens/splash_screen/splash_screen.dart' as _i1;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i4.RootStackRouter {
+  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i4.PageFactory> pagesMap = {
     SplashScreenRoute.name: (routeData) {
-      return _i3.AdaptivePage<dynamic>(
+      return _i4.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
         opaque: true,
       );
     },
-    LoginScreenRoute.name: (routeData) {
-      return _i3.AdaptivePage<dynamic>(
+    DashboardScreenRoute.name: (routeData) {
+      return _i4.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginScreen(),
+        child: const _i2.DashboardScreen(),
+        opaque: true,
+      );
+    },
+    HomeScreenRoute.name: (routeData) {
+      return _i4.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.HomeScreen(),
         opaque: true,
       );
     },
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i4.RouteConfig> get routes => [
+        _i4.RouteConfig(
           SplashScreenRoute.name,
           path: '/',
         ),
-        _i3.RouteConfig(
-          LoginScreenRoute.name,
-          path: '/login-screen',
+        _i4.RouteConfig(
+          DashboardScreenRoute.name,
+          path: '/dashboard-screen',
+        ),
+        _i4.RouteConfig(
+          HomeScreenRoute.name,
+          path: '/home-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashScreenRoute extends _i3.PageRouteInfo<void> {
+class SplashScreenRoute extends _i4.PageRouteInfo<void> {
   const SplashScreenRoute()
       : super(
           SplashScreenRoute.name,
@@ -64,13 +76,25 @@ class SplashScreenRoute extends _i3.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.LoginScreen]
-class LoginScreenRoute extends _i3.PageRouteInfo<void> {
-  const LoginScreenRoute()
+/// [_i2.DashboardScreen]
+class DashboardScreenRoute extends _i4.PageRouteInfo<void> {
+  const DashboardScreenRoute()
       : super(
-          LoginScreenRoute.name,
-          path: '/login-screen',
+          DashboardScreenRoute.name,
+          path: '/dashboard-screen',
         );
 
-  static const String name = 'LoginScreenRoute';
+  static const String name = 'DashboardScreenRoute';
+}
+
+/// generated route for
+/// [_i3.HomeScreen]
+class HomeScreenRoute extends _i4.PageRouteInfo<void> {
+  const HomeScreenRoute()
+      : super(
+          HomeScreenRoute.name,
+          path: '/home-screen',
+        );
+
+  static const String name = 'HomeScreenRoute';
 }
