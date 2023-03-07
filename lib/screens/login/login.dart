@@ -42,10 +42,10 @@ Future<Object?> loginContainer(BuildContext context) {
                     },
                     child: LoginContent(
                       onTap: () {
-                        context.router.replace(const HomeScreenRoute());
-                        // loginBloc.add(DoLoginEvent(
-                        //     email: LoginContent.controller[0].text,
-                        //     password: LoginContent.controller[1].text));
+                        // context.router.replace(const HomeScreenRoute());
+                        loginBloc.add(DoLoginEvent(
+                            email: LoginContent.controller[0].text,
+                            password: LoginContent.controller[1].text));
                       },
                     ),
                   ),

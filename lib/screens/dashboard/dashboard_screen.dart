@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:satasat_app/constant/colors.dart';
 import 'package:satasat_app/constant/constants.dart';
 import 'package:satasat_app/screens/dashboard/widgets/row_cards.dart';
+
+import '../user/bloc/user_bloc.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -12,7 +15,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  bool showAll = false;
+  bool showAll = true;
+  UserBloc userBloc = UserBloc();
   List<String> items = [
     "Item 1",
     "Item 2",
@@ -27,10 +31,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
     "Item 11",
     "Item 12",
   ];
+  @override
+  void initState() {
+    userBloc.add(UserGetEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     List<String> displayedItems = showAll ? items.sublist(0, 4) : items;
+
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -39,9 +49,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Hello, Rahul",
-              style: TextStyle(fontFamily: "Poppins", fontSize: 24),
+            BlocBuilder<UserBloc, UserState>(
+              bloc: userBloc,
+              builder: (context, state) {
+                if (state is UserGetLoading) {
+                  return const Text(
+                    "Hello, User",
+                    style: TextStyle(fontFamily: "Poppins", fontSize: 24),
+                  );
+                }
+                if (state is UserGetFailed) {
+                  return const Text(
+                    "Hello, User",
+                    style: TextStyle(fontFamily: "Poppins", fontSize: 24),
+                  );
+                }
+                if (state is UserGetSuccess) {
+                  return Text(
+                    "Hello, ${state.data?.firstName}",
+                    style: const TextStyle(fontFamily: "Poppins", fontSize: 24),
+                  );
+                }
+                return const SizedBox();
+                // return const Text(
+                //   "Hello, name",
+                //   style: TextStyle(fontFamily: "Poppins", fontSize: 24),
+                // );
+              },
             ),
             Text("Welcome to Satasat",
                 style: GoogleFonts.robotoSlab(
@@ -51,11 +85,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              radius: 30,
-              child: Image.asset("assets/icons/default.png"),
+          InkWell(
+            onTap: () {
+              userBloc.add(UserGetEvent());
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: CircleAvatar(
+                radius: 30,
+                child: Image.asset("assets/icons/default.png"),
+              ),
             ),
           )
         ],
@@ -76,8 +115,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  showAll = !showAll;
-                  setState(() {});
+                  setState(() {
+                    showAll = !showAll;
+                  });
                 },
                 child: Text(
                   !showAll ? "Show less" : "Show All",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:satasat_app/routes/routes.gr.dart';
 import 'package:satasat_app/screens/login/bloc/login_bloc.dart';
+import 'package:satasat_app/screens/user/bloc/user_bloc.dart';
 
 import 'constant/theme.dart';
 
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => UserBloc(),
         )
       ],
       child: MaterialApp.router(

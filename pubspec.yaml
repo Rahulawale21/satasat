@@ -46,6 +46,7 @@ dependencies:
   meta: ^1.8.0
   google_fonts: ^4.0.3
   floating_bottom_navigation_bar: ^1.5.2
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +60,6 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.3
-  json_annotation: ^4.8.0
   json_serializable: ^6.6.1
   
 
